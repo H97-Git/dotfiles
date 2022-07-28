@@ -1,0 +1,45 @@
+# vim:ft=kitty
+
+# Start Config Here
+font_family     CaskaydiaCove Nerd Font
+font_size       22.0
+disable_ligatures never
+
+map ctrl+left resize_window narrower
+map ctrl+right resize_window wider
+map ctrl+up resize_window taller
+map ctrl+down resize_window shorter 3
+
+enabled_layouts tall:bias=70;full_size=1;mirrored=false
+symbol_map U+f101-U+f208 nonicons
+allow_remote_control
+
+ /* background #122637 */
+ /* foreground #ffffff */
+ /* cursor #f0cb09 */
+ /* selection_background #18344f */
+ /* color0 #000000 */
+ /* color8 #545454 */
+ /* color1 #ff0000 */
+ /* color9 #f40d17 */
+ /* color2 #37dd21 */
+ /* color10 #3bcf1d */
+ /* color3 #fee409 */
+ /* color11 #ecc809 */
+ /* color4 #1460d2 */
+ /* color12 #5555ff */
+ /* color5 #ff005d */
+ /* color13 #ff55ff */
+ /* color6 #00bbbb */
+ /* color14 #6ae3f9 */
+ /* color7 #bbbbbb */
+ /* color15 #ffffff */
+ /* selection_foreground #122637 */
+
+
+# Catppuccin
+include current-theme.conf
+
+map F1 nvim --cwd=current
+/* map ctrl+shift+plus change_font_size all +2.0 */
+/* map ctrl+shift+minus change_font_size all -2.0 */

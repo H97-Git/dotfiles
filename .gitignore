@@ -13,4 +13,6 @@
 
 !fish/**
 
+!kitty/**
+
 !nvim/lua/user/**
