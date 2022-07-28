@@ -17,4 +17,6 @@
 
 !omf/**
 
+!polybar/**
+
 !nvim/lua/user/**
