@@ -11,4 +11,6 @@
 
 !dunst/dunstrc
 
+!fish/**
+
 !nvim/lua/user/**
