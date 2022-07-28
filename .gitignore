@@ -9,4 +9,6 @@
 !xmonad/*.hs
 !xmonad/lib/**/*.hs
 
+!dunst/dunstrc
+
 !nvim/lua/user/**
