@@ -15,4 +15,6 @@
 
 !kitty/**
 
+!omf/**
+
 !nvim/lua/user/**
