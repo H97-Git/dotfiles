@@ -1,0 +1,10 @@
+*
+!*/
+!.gitignore
+
+!./README.md
+
+
+# Xmonad
+!xmonad/*.hs
+!xmonad/lib/**/*.hs
