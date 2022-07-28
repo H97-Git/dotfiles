@@ -1,7 +1,6 @@
 *
 !*/
 !.gitignore
-
 !./README.md
 
 
@@ -15,10 +14,11 @@
 
 !kitty/**
 
+# AstroNvim
+!nvim/lua/user/**
+
 !omf/**
 
 !polybar/**
 
 !rofi/**
-
-!nvim/lua/user/**
