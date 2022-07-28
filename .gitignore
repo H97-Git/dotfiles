@@ -8,3 +8,5 @@
 # Xmonad
 !xmonad/*.hs
 !xmonad/lib/**/*.hs
+
+!nvim/lua/user/**
