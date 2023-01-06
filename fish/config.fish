@@ -2,11 +2,19 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-function fish_greeting
-
-end
-
 zoxide init fish | source
-oh-my-posh init fish --config ~/.poshthemes/atomic.omp.json | source
+oh-my-posh init fish --config ~/.mytheme.omp.json | source
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/arno/.ghcup/bin # ghcup-env
+source "$HOME/.config/fish/conf.d/catppuccin.fish"
+
+alias v nvim
+alias vi nvim
+alias vim nvim
+# alias emacs "emacsclient -c -a 'emacs'"
+alias q exit
+alias rd "rm -rf"
+alias .. "cd .."
+alias zz ..
+alias clc "history -1 | xclip -selection clipboard"
+set -g BROWSER vivaldi-stable
+set -g EDITOR nvim

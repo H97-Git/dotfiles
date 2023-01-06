@@ -12,5 +12,5 @@
 # gnome_do	slingshot		appdrawer			appdrawer_alt	appfolder
 # column	row				row_center			screen			row_dock		row_dropdown
 
-dir="$HOME/.config/rofi/launchers/misc"
+dir="$HOME/.config/rofi/launchers/misc/launchpads/"
 rofi -no-lazy-grab -show drun -modi drun -theme $dir/"launchpad"

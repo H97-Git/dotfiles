@@ -17,5 +17,5 @@ updates=$((updates_arch + updates_aur))
 if [ "$updates" -gt 0 ]; then
     echo "# Arch : $updates_arch AUR : $updates_aur"
 else
-    echo "# 0"
+    echo "System Up To Date"
 fi

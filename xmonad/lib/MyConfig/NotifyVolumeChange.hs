@@ -60,19 +60,19 @@ dunstify opt summary body = spawn $
 
 volumeToggle, volumeUp, volumeDown :: String -> X ()
 volumeToggle target =
-    spawnAndWait (printf "amixer -q set %s toggle" target) >>
+    spawnAndWait (printf "amixer -q -D pulse set %s toggle" target) >>
     notifyVolumeChange target
 volumeUp target =
-    spawnAndWait (printf "amixer -q set %s 2%%+ unmute" target) >>
+    spawnAndWait (printf "amixer -q -D pulse set %s 2%%+ unmute" target) >>
     notifyVolumeChange target
 volumeDown target =
-    spawnAndWait (printf "amixer -q set %s 2%%- unmute" target) >>
+    spawnAndWait (printf "amixer -q -D pulse set %s 2%%- unmute" target) >>
     notifyVolumeChange target
 
 notifyVolumeChange :: String -> X ()
 notifyVolumeChange target = do
     w <- words . last . lines
-        <$> spawnWithOutput (printf "amixer get %s" target)
+        <$> spawnWithOutput (printf "amixer -D pulse get %s" target)
     when (length w == 6) $
         let (v, t) = (trimVol (w!!4), trimMut (w!!5))
             msg = printf "%s volume%s" target (bool " [mute]" "" (t=="on"))
