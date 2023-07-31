@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-notify-send "launch_left.sh"
+notify-send "launch-left.sh"
 
 # Add this script to your wm startup file.
 
@@ -12,6 +12,19 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
-# polybar -q main -c "$DIR"/config_left.ini &
- polybar -q top -c "$DIR"/config_left.ini &
- polybar -q bottom -c "$DIR"/config_left.ini &
+polybar -q top-left -c "$DIR"/config_left.ini &
+polybar -q top-center -c "$DIR"/config_left.ini &
+polybar -q top-right -c "$DIR"/config_left.ini &
+polybar -q bottom-left -c "$DIR"/config_left.ini &
+polybar -q bottom-center -c "$DIR"/config_left.ini &
+polybar -q bottom-right -c "$DIR"/config_left.ini &
+#
+# polybar -c $DIR main-left &
+# polybar -c $DIR main-left-extended &
+# polybar -c $DIR main-left-links &
+# polybar -c $DIR main-middle &
+# polybar -c $DIR main-right &
+# polybar -c $DIR main-right-extended &
+# polybar -c $DIR main-tray &
+# polybar -c $DIR left &
+# polybar -c $DIR main-profile &

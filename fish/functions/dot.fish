@@ -8,4 +8,4 @@ function dot
             cd $argv
             nvim ~/.config/$argv
     end
-end    
+end

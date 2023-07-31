@@ -2,14 +2,18 @@ import XMonad
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.SpawnOn
+import qualified XMonad.Actions.FlexibleResize as Flex
 
 import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Hooks.ManageDocks  (ToggleStruts(..), manageDocks, docksEventHook , Direction2D (D, L, R, U), docks)
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageHelpers (doHideIgnore,doCenterFloat,doFullFloat,isDialog,isInProperty, isFullscreen,composeOne,(-?>),transience)
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad 
+import XMonad.Util.WorkspaceCompare (WorkspaceSort)
 
 import XMonad.Layout.Fullscreen  (fullscreenSupport,fullscreenManageHook )
 import XMonad.Layout.Gaps  (gaps, Direction2D (D, L, R, U), GapMessage (DecGap, IncGap, ToggleGaps), gaps, setGaps)
@@ -39,6 +43,25 @@ myNormalBorderColor = "#302D41"
 myFocusedBorderColor = "#7c4dff"
 myGaps = [(L, 10), (R, 10), (U, 40), (D, 40)]
 
+myPolybar :: StatusBarConfig
+myPolybar =
+  def
+    { sbLogHook =
+        xmonadPropLog
+          =<< dynamicLogString polybarPP,
+      sbStartupHook = spawn "~/.config/polybar/launch.sh",
+      sbCleanupHook = spawn "killall polybar"
+    }
+
+polybarPP :: PP
+polybarPP =
+  def
+    { ppCurrent = textColor "" . wrap "" "",
+      ppOrder = \(_ : l : _ : _) -> [l]
+    }
+
+textColor :: String -> String -> String
+textColor color = wrap ("%{F" <> color <> "}") " %{F-}"
 
 isNotification :: Query Bool
 isNotification = isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_NOTIFICATION"
@@ -46,21 +69,23 @@ isJetBrainDialog = isInProperty "WM_CLASS" "jetbrains-rider"
 myLogHook = fadeInactiveLogHook fadeAmount
      where fadeAmount = 1
 
-myWorkspaces = ["www","dev","default","notes","chat","media"]
+myWorkspaces = ["www","dev","default","notes","chat","media","other"]
 
 myManageHook = fullscreenManageHook <+> manageDocks <+> manageSpawn <+> composeAll
       [
         className =? "Vivaldi-stable" --> doShift (head myWorkspaces),
         className =? "Chromium" --> doShift (head myWorkspaces),
-        className =? "jetbrains-rider" --> doShift (myWorkspaces !! 1),
+        className =? "jetbrains-rider"  --> doShift (myWorkspaces !! 1),
+        className =? "jetbrains-pycharm-ce"  --> doShift (myWorkspaces !! 1),
         className =? "notion-app-enhanced" --> doShift (myWorkspaces !! 3),
         className =? "obsidian" --> doShift (myWorkspaces !! 3),
         className =? "discord" --> doShift (myWorkspaces !! 4),
-        className =? "Ferdium" -->  doShift (myWorkspaces !! 4),
+        className =? "Ferdium" --> doShift (myWorkspaces !! 4),
         className =? "vlc" --> doShift (myWorkspaces !! 5),
-        className =? "QMPlay2" --> doShift (myWorkspaces !! 5),
+        className =? "QMPlay2"  --> doShift (myWorkspaces !! 5),
         className =? "Xmessage" --> doCenterFloat,
         className =? "explore.exe" --> doHideIgnore,
+        className =? "Dear PyGui" --> doFloat,
         resource =? "desktop_window" --> doIgnore,
         name =? "splash" --> doIgnore,
         isDialog --> doCenterFloat,
@@ -89,15 +114,15 @@ myEZKeys =
           ("M-S-<Return>", spawn myTerminal),
           ("<Print>", spawn "flameshot gui"),
           ("M-v", spawn myBrowser),
-          ("M-S-e", spawn "emacs"),
           ("M-d", spawn "kitty -e xplr"),
           ("M-S-d", spawn "thunar"),
           ("M-S-s",spawn "xprop | xmessage -file -"),
+          ("M-S-p",spawn "polybar-msg cmd toggle"),
           -- NamedScratchpad
-          -- ("M-s d", namedScratchpadAction myScratchPads "files"),
           ("M-s p", namedScratchpadAction myScratchPads "btop"),
           ("M-s t", namedScratchpadAction myScratchPads "terminal"),
           ("M-s m", namedScratchpadAction myScratchPads "ncmpcpp"),
+          ("M-s v", namedScratchpadAction myScratchPads "vivaldi"),
           -- Rofi
           ("M-a", spawn "rofi -show drun"),
           ("M-S-a", spawn "~/.config/rofi/launchers/misc/launchpads/launcher_launchpad.sh"),
@@ -154,29 +179,42 @@ myEZKeys =
           ("M-t", withFocused $ windows . W.sink)
        ]
 
-myMouseBindings (XConfig {XMonad.modMask = modm}) =
+myMouseBindings :: XConfig l -> M.Map (KeyMask, Button) (Window -> X ())
+myMouseBindings XConfig {XMonad.modMask = modm} =
   M.fromList
-    -- mod-button1, Set the window to floating mode and move by dragging
     [ ( (modm, button1),
-        \w ->
-          focus w >> mouseMoveWindow w
-            >> windows W.shiftMaster
+        \w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster
       ),
-      -- mod-button2, Raise the window to the top of the stack
       ((modm, button2), \w -> focus w >> windows W.shiftMaster),
-      -- mod-button3, Set the window to floating mode and resize by dragging
       ( (modm, button3),
-        \w ->
-          focus w >> mouseResizeWindow w
-            >> windows W.shiftMaster
+        \w -> focus w >> Flex.mouseResizeWindow w >> windows W.shiftMaster
       )
     ]
+
+-- myMouseBindings (XConfig {XMonad.modMask = modm}) =
+--   M.fromList
+--     -- mod-button1, Set the window to floating mode and move by dragging
+--     [ ( (modm, button1),
+--         \w ->
+--           focus w >> mouseMoveWindow w
+--             >> windows W.shiftMaster
+--       ),
+--       -- mod-button2, Raise the window to the top of the stack
+--       ((modm, button2), \w -> focus w >> windows W.shiftMaster),
+--       -- mod-button3, Set the window to floating mode and resize by dragging
+--       ( (modm, button3),
+--         \w ->
+--           focus w >> mouseResizeWindow w
+--             >> windows W.shiftMaster
+--       )
+--     ]
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [
   -- NS "files" "thunar" (className =? "thunar") manageTerm,
   NS "terminal" "kitty --class=scratchpad" (className =? "scratchpad") manageTerm,
   NS "ncmpcpp" "kitty --class=ncmpcpp -e ncmpcpp" (className =? "ncmpcpp") manageTerm,
+  NS "vivaldi" "vivaldi-stable" (className =? "scratchpad") manageTerm,
   NS "btop" "kitty --class=bpytop -e bpytop" (className =? "bpytop") manageTerm]
   where
     manageTerm = customFloating $ W.RationalRect l t w h
@@ -186,7 +224,7 @@ myScratchPads = [
                  t = 0.1
                  l = 0.1
 
-main = xmonad $ fullscreenSupport $ docks $ ewmh defaults
+main = xmonad $ withSB myPolybar $ fullscreenSupport $ docks $ ewmh defaults
 defaults = def { 
                   terminal = myTerminal,
                   focusFollowsMouse = False,

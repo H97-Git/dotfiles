@@ -3,22 +3,25 @@
 !.gitignore
 !./README.md
 
-yarn/
-# Xmonad
-!xmonad/*.hs
-!xmonad/lib/**/*.hs
+yarn/**
 
-!dunst/dunstrc
+!dunst/**
 
 !fish/**
 
 !kitty/**
 
-# AstroNvim
-!nvim/lua/user/**
-
-!omf/**
-
-!polybar/**
+!nvim/**
 
 !rofi/**
+
+!waybar/**
+
+!discocss/**
+
+!hypr/**
+
+!mpd/mpd.conf
+!ncmpcpp/config
+
+!wpaperd/**
