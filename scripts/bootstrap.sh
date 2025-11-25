@@ -14,7 +14,7 @@ fi
 
 echo "[+] Installing CLI utils packages…"
 if command -v pacman >/dev/null; then
-  sudo pacman -S --needed zoxide exa bat clipse neofetch fd bpytop --noconfirm
+  sudo pacman -S --needed lazygit zoxide exa bat clipse neofetch fd bpytop --noconfirm
 fi
 
 echo "[+] Installing utils packages…"
@@ -28,7 +28,12 @@ cd ~/.dotfiles
 # Stow common packages
 stow fish
 stow kitty
-stow git
+stow bpytop
+stow hypr
+stow nvim
+stow rofi
+stow superfile
+stow waybar
 
 # OS/host-specific
 if grep -q 'EndeavourOS' /etc/os-release; then
