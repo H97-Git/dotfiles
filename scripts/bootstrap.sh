@@ -2,12 +2,17 @@
 
 set -e
 
-echo "[+] Installing base packages…"
+echo "[+] Installing required packages…"
 if command -v pacman >/dev/null; then
-  sudo pacman -S --needed stow git fish fisher omf kitty vivaldi waybar rofi wl-clipboard thunar --noconfirm
+  sudo pacman -S --needed stow git --noconfirm
 fi
 
-echo "[+] Installing devs env packages…"
+echo "[+] Installing base packages…"
+if command -v pacman >/dev/null; then
+  sudo pacman -S --needed fish fisher omf kitty vivaldi waybar rofi wl-clipboard thunar --noconfirm
+fi
+
+echo "[+] Installing development environment packages…"
 if command -v pacman >/dev/null; then
   sudo pacman -S --needed nvim nodejs npm python3 --noconfirm
 fi
