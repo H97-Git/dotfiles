@@ -4,7 +4,22 @@ set -e
 
 echo "[+] Installing base packages…"
 if command -v pacman >/dev/null; then
-  sudo pacman -S --needed stow git fish kitty --noconfirm
+  sudo pacman -S --needed stow git fish fisher omf kitty vivaldi waybar rofi wl-clipboard thunar --noconfirm
+fi
+
+echo "[+] Installing devs env packages…"
+if command -v pacman >/dev/null; then
+  sudo pacman -S --needed nvim nodejs npm python3 --noconfirm
+fi
+
+echo "[+] Installing CLI utils packages…"
+if command -v pacman >/dev/null; then
+  sudo pacman -S --needed zoxide exa bat clipse neofetch fd bpytop --noconfirm
+fi
+
+echo "[+] Installing utils packages…"
+if command -v pacman >/dev/null; then
+  sudo pacman -S --needed slurp grim satty appimagelauncher --noconfirm
 fi
 
 echo "[+] Stowing dotfiles…"

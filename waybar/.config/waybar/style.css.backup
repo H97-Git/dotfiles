@@ -1,0 +1,143 @@
+@import "colors.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family:
+    "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font Mono", monospace;
+  font-size: 14px;
+  font-weight: 900;
+  margin: 1;
+  padding: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  padding: 0;
+}
+
+window#waybar > box {
+  background-color: rgba(8, 10, 16, 0.9);
+  border-radius: 10px;
+  border: 1px solid rgba(34, 44, 64, 0.45);
+  padding: 0 10px;
+  box-shadow: 0 10px 22px rgba(2, 4, 8, 0.55);
+}
+
+.modules-left > *,
+.modules-center > *,
+.modules-right > * {
+  background-color: rgba(14, 16, 24, 0.92);
+  border-radius: 9px;
+  border: 1px solid rgba(34, 44, 64, 0.4);
+  min-width: 0;
+  /* No block around modules */
+  /* background-color: transparent; */
+  /* border: 0; */
+}
+
+.modules-left > *:hover,
+.modules-center > *:hover,
+.modules-right > *:hover {
+  border-color: rgba(122, 216, 195, 0.55);
+}
+
+label {
+  color: @accent;
+  text-shadow: none;
+}
+.module label {
+  color: @accent;
+}
+
+#window {
+  background-color: rgba(14, 16, 24, 0.92);
+  border-radius: 9px;
+}
+
+window#waybar.empty #window {
+  border: 0;
+  background-color: transparent;
+}
+
+#pulseaudio-slider {
+  min-width: 100px;
+}
+
+#pulseaudio-slider trough {
+  background-color: rgba(14, 16, 24, 0.92);
+  border-radius: 8px;
+  border: 1px solid rgba(34, 44, 64, 0.35);
+  min-height: 8px;
+}
+
+#pulseaudio-slider highlight {
+  background-color: @accent;
+  border-radius: 8px;
+}
+
+#pulseaudio-slider slider {
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 10px;
+  background-color: @foreground;
+  border: 1px solid rgba(34, 44, 64, 0.45);
+}
+
+tooltip {
+  background-color: rgba(14, 16, 24, 0.95);
+  border-radius: 8px;
+  border: 1px solid rgba(34, 44, 64, 0.55);
+  padding: 4px 8px;
+}
+
+tooltip label {
+  font-size: 11px;
+  color: @accent;
+}
+
+#tray,
+#disk,
+#memory,
+#window,
+#network,
+#clock,
+#custom-bell,
+#custom-pacman,
+#custom-aur,
+#cpu,
+#temperature,
+#workspaces,
+#custom-headset,
+#pulseaudio,
+#pulseaudio-slider {
+  padding: 0 10px;
+}
+
+#workspaces {
+  border: 0;
+  border-color: transparent;
+}
+
+#workspaces button {
+  background-color: rgba(14, 16, 24, 0.92);
+  border-radius: 8px;
+  border: 1px solid rgba(34, 44, 64, 0.35);
+  padding: 0px 7px;
+}
+#workspaces button.active {
+  border-color: #fff;
+}
+#workspaces button:hover {
+}
+
+#workspaces button:first-child {
+}
+
+#workspaces button:last-child {
+}
+
+#workspaces button.urgent {
+  border-color: @red;
+  color: @red;
+}

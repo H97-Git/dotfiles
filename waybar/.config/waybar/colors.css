@@ -1,0 +1,17 @@
+@define-color background rgba(16, 18, 26, 0.82);
+@define-color background-solid #10121a;
+@define-color surface #171b24;
+@define-color surface-strong #1f2432;
+@define-color border #2a3142;
+@define-color foreground #e8ecf4;
+@define-color foreground-muted #8891a4;
+@define-color accent #7ad8c3;
+@define-color accent-soft rgba(122, 216, 195, 0.16);
+@define-color accent-strong #4fc4a8;
+@define-color cyan #7ad8c3;
+@define-color green #9ce5b3;
+@define-color orange #f7c27d;
+@define-color pink #f4b2d4;
+@define-color purple #a5adff;
+@define-color red #f28fad;
+@define-color yellow #f2dd8a;

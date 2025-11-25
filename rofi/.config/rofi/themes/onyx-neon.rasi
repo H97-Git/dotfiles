@@ -1,0 +1,107 @@
+/* Onyx Neon — unified rofi theme for Waybar pairing */
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  background: #10121a;
+  background-alt: #171b24;
+  surface: #1f2432;
+  surface-strong: #262d3d;
+  foreground: #e8ecf4;
+  foreground-muted: #9aa3b8;
+  accent: #7ad8c3;
+  accent-soft: rgba(122, 216, 195, 0.15);
+  alert: #f28fad;
+  border-radius: 14px;
+}
+
+window {
+  width: 36%;
+  border: 1px solid;
+  border-color: @surface-strong;
+  border-radius: @border-radius;
+  padding: 18px 20px 20px 20px;
+  background-color: rgba(16, 18, 26, 0.82);
+}
+
+mainbox {
+  spacing: 12px;
+}
+
+inputbar {
+  border-radius: @border-radius;
+  padding: 10px 14px;
+  border: 1px solid;
+  border-color: @surface-strong;
+  background-color: @surface;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  margin: 0 10px 0 4px;
+  text-color: @accent;
+}
+
+entry {
+  text-color: @foreground;
+  cursor: text;
+  placeholder: "Search everywhere…";
+}
+
+listview {
+  border-radius: @border-radius;
+  padding: 6px;
+  background-color: rgba(31, 36, 50, 0.55);
+  columns: 1;
+  spacing: 6px;
+}
+
+element {
+  padding: 10px 12px;
+  border-radius: @border-radius;
+  background-color: transparent;
+  text-color: @foreground-muted;
+}
+
+element-text {
+  highlight: bold underline;
+}
+
+element selected {
+  text-color: @foreground;
+  background-color: @accent-soft;
+  border: 1px solid;
+  border-color: rgba(122, 216, 195, 0.25);
+}
+
+element-icon {
+  size: 26px;
+  background-color: transparent;
+  margin: 0 10px 0 4px;
+}
+
+message {
+  border-radius: @border-radius;
+  padding: 10px 12px;
+  background-color: @surface;
+  text-color: @foreground;
+}
+
+textbox {
+  horizontal-align: 0.5;
+  text-color: @foreground-muted;
+}
+
+button {
+  border-radius: @border-radius;
+  padding: 8px 12px;
+  background-color: @surface;
+  text-color: @foreground-muted;
+  border: 1px solid;
+  border-color: transparent;
+}
+
+button selected {
+  text-color: @foreground;
+  border: 1px solid;
+  border-color: rgba(122, 216, 195, 0.25);
+  background-color: @accent-soft;
+}

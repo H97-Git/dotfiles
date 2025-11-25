@@ -1,0 +1,159 @@
+/* One Dark inspired modern theme */
+@define-color od-base #1e2127;
+@define-color od-surface #23262e;
+@define-color od-overlay #2c313c;
+@define-color od-border #3b404c;
+@define-color od-shadow rgba(9, 10, 16, 0.55);
+@define-color od-text #c8ccd4;
+@define-color od-muted #9da5b4;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: @od-text;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar > box {
+  background-color: rgba(30, 33, 39, 0.92);
+  border: 1px solid rgba(59, 64, 76, 0.6);
+  border-radius: 12px;
+  padding: 6px 12px;
+  box-shadow: 0 16px 38px @od-shadow;
+}
+
+.modules-left > *,
+.modules-center > *,
+.modules-right > * {
+  background-color: rgba(35, 38, 46, 0.85);
+  border-radius: 10px;
+  border: 1px solid rgba(59, 64, 76, 0.55);
+  padding: 0 12px;
+  min-width: 0;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.modules-left > *:hover,
+.modules-center > *:hover,
+.modules-right > *:hover {
+  background-color: rgba(44, 49, 60, 0.88);
+  border-color: rgba(97, 175, 239, 0.7);
+}
+
+#window {
+  padding: 0 14px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  border: 0;
+}
+
+tooltip {
+  background-color: rgba(35, 38, 46, 0.95);
+  border: 1px solid rgba(59, 64, 76, 0.7);
+  border-radius: 8px;
+  padding: 6px 9px;
+}
+
+tooltip label {
+  color: @od-text;
+  font-size: 11px;
+}
+
+#workspaces {
+  border: 0;
+  padding: 0;
+  color: #9d79d6;
+}
+
+#workspaces button {
+  background-color: rgba(35, 38, 46, 0.78);
+  border: 1px solid rgba(59, 64, 76, 0.55);
+  border-radius: 8px;
+  margin: 0 4px;
+  padding: 0 10px;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+#workspaces button:hover {
+  background-color: rgba(44, 49, 60, 0.9);
+  border-color: rgba(86, 182, 194, 0.68);
+}
+
+#workspaces button.active {
+  background-color: rgba(97, 175, 239, 0.18);
+  border-color: rgba(97, 175, 239, 0.78);
+  color: #b497ff;
+}
+
+#workspaces button.urgent {
+  border-color: #e06c75;
+  color: #e06c75;
+}
+
+#pulseaudio-slider {
+  padding: 0 14px;
+  color: #abb2bf;
+}
+
+#pulseaudio-slider trough {
+  background-color: rgba(44, 49, 60, 0.75);
+  border-radius: 999px;
+  border: 1px solid rgba(59, 64, 76, 0.55);
+  min-height: 8px;
+}
+
+#pulseaudio-slider highlight {
+  background-color: #abb2bf;
+  border-radius: 999px;
+}
+
+#pulseaudio-slider slider {
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 999px;
+  background-color: rgba(171, 178, 191, 0.85);
+  border: 1px solid rgba(97, 175, 239, 0.45);
+}
+
+/* Module-specific color accents */
+#tray { color: #e06c75; }
+#disk { color: #d19a66; }
+#memory { color: #e5c07b; }
+#window { color: #c678dd; }
+#network { color: #56b6c2; }
+#custom-pacman { color: #98c379; }
+#custom-aur { color: #7fdbca; }
+#clock { color: #61afef; }
+#cpu { color: #81a1c1; }
+#temperature { color: #f6bd6b; }
+#custom-headset { color: #a0c980; }
+#pulseaudio { color: #be5046; }
+#custom-bell { color: #ff8f5f; }
+
+#tray,
+#disk,
+#memory,
+#window,
+#network,
+#custom-pacman,
+#custom-aur,
+#clock,
+#cpu,
+#temperature,
+#custom-headset,
+#pulseaudio,
+#pulseaudio-slider,
+#custom-bell {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}

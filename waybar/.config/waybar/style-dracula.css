@@ -1,0 +1,160 @@
+/* Dracula inspired dark theme */
+@define-color drac-base #1e1f29;
+@define-color drac-surface #282a36;
+@define-color drac-overlay #303446;
+@define-color drac-border #44475a;
+@define-color drac-shadow rgba(10, 10, 18, 0.6);
+@define-color drac-text #f8f8f2;
+@define-color drac-muted #bbc0d4;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: @drac-text;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar > box {
+  background-color: rgba(40, 42, 54, 0.9);
+  border: 1px solid rgba(68, 71, 90, 0.6);
+  border-radius: 12px;
+  padding: 6px 12px;
+  box-shadow: 0 20px 42px @drac-shadow;
+}
+
+.modules-left > *,
+.modules-center > *,
+.modules-right > * {
+  background-color: rgba(48, 52, 70, 0.85);
+  border-radius: 10px;
+  border: 1px solid rgba(68, 71, 90, 0.55);
+  padding: 0 12px;
+  min-width: 0;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.modules-left > *:hover,
+.modules-center > *:hover,
+.modules-right > *:hover {
+  background-color: rgba(68, 71, 90, 0.85);
+  border-color: rgba(189, 147, 249, 0.75);
+}
+
+#window {
+  padding: 0 14px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  border: 0;
+}
+
+tooltip {
+  background-color: rgba(30, 31, 41, 0.95);
+  border: 1px solid rgba(68, 71, 90, 0.7);
+  border-radius: 8px;
+  padding: 6px 9px;
+}
+
+tooltip label {
+  color: @drac-text;
+  font-size: 11px;
+}
+
+#workspaces {
+  border: 0;
+  padding: 0;
+  color: #9aedfe;
+}
+
+#workspaces button {
+  background-color: rgba(48, 52, 70, 0.75);
+  border: 1px solid rgba(68, 71, 90, 0.55);
+  border-radius: 8px;
+  margin: 0 4px;
+  padding: 0 10px;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+#workspaces button:hover {
+  background-color: rgba(68, 71, 90, 0.88);
+  border-color: rgba(80, 250, 123, 0.65);
+}
+
+#workspaces button.active {
+  background-color: rgba(80, 250, 123, 0.18);
+  border-color: rgba(80, 250, 123, 0.8);
+  color: #d5ff9d;
+}
+
+#workspaces button.urgent {
+  border-color: #ff5555;
+  color: #ff5555;
+}
+
+#pulseaudio-slider {
+  padding: 0 14px;
+  color: #f8f8f2;
+}
+
+#pulseaudio-slider trough {
+  background-color: rgba(68, 71, 90, 0.7);
+  border-radius: 999px;
+  border: 1px solid rgba(82, 86, 110, 0.6);
+  min-height: 8px;
+}
+
+#pulseaudio-slider highlight {
+  background-color: #f8f8f2;
+  border-radius: 999px;
+}
+
+#pulseaudio-slider slider {
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 999px;
+  background-color: rgba(248, 248, 242, 0.85);
+  border: 1px solid rgba(189, 147, 249, 0.5);
+}
+
+/* Module-specific color accents */
+#tray { color: #ff79c6; }
+#disk { color: #ff92df; }
+#memory { color: #caa9ff; }
+#window { color: #8be9fd; }
+#network { color: #50fa7b; }
+#custom-pacman { color: #f1fa8c; }
+#custom-aur { color: #ffb86c; }
+#clock { color: #ffe4a6; }
+#cpu { color: #5af78e; }
+#temperature { color: #ff6e6e; }
+#custom-headset { color: #7ea5ff; }
+#pulseaudio { color: #bd93f9; }
+#custom-bell { color: #ff5555; }
+
+#workspaces button,
+#tray,
+#disk,
+#memory,
+#window,
+#network,
+#custom-pacman,
+#custom-aur,
+#clock,
+#cpu,
+#temperature,
+#custom-headset,
+#pulseaudio,
+#pulseaudio-slider,
+#custom-bell {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}

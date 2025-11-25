@@ -1,0 +1,81 @@
+/* Dracula x Hyprland — rofi theme */
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  background: #1e1f29;
+  background-alt: #282a36;
+  foreground: #f8f8f2;
+  selected: #44475a;
+  accent: #bd93f9;
+  border-radius: 12px;
+}
+
+window {
+  width: 38%;
+  border: 2px solid;
+  border-color: @accent;
+  padding: 14px;
+  background-color: @background;
+}
+
+mainbox {
+  padding: 6px;
+}
+
+inputbar {
+  background-color: @background-alt;
+  border: 1px solid ;
+  border-color: @selected;
+  padding: 8px 10px;
+  margin: 0px 0px 10px 0px;
+}
+
+prompt {
+  text-color: @accent;
+  margin: 0 8px 0 4px;
+}
+
+entry {
+  text-color: @foreground;
+  placeholder: "Type to search…";
+}
+
+listview {
+  spacing: 6px;
+  fixed-height: 0;
+  scrollbar: true;
+}
+
+element {
+  padding: 8px 10px;
+  background-color: transparent;
+}
+
+element-icon {
+  size: 22px;
+}
+
+element selected {
+  background-color: @selected;
+  text-color: @foreground;
+  border: 1px solid;
+  border-color: @accent;
+}
+
+message {
+  background-color: @background-alt;
+  border: 1px solid;
+  border-color: @selected;
+  padding: 8px;
+}
+
+button {
+  background-color: @background-alt;
+  border: 1px solid;
+  border-color:@selected;
+  padding: 6px 10px;
+}
+
+button selected {
+  background-color: @accent;
+  text-color: @background;
+}

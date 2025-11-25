@@ -1,0 +1,95 @@
+{
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 100,
+    "icon": true
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "㊀ www",
+      "2": "㊁ dev",
+      "3": "㊂ default",
+      "4": "㊃ notes",
+      "5": "㊄ chat",
+      "6": "㊅ media",
+      "7": "㊆ other",
+      "8": "㊇ gaming"
+    }
+  },
+  "cpu": {
+    "format": "  {usage}%"
+  },
+  "memory": {
+    "format": "  {used:0.1f}G/{total}G"
+  },
+  "temperature": {
+    "format": "  {temperatureC}°C"
+  },
+  "disk": {
+    "path": "/",
+    "format": "  {used}/{total}",
+    "interval": 60
+  },
+  "network": {
+    "format-ethernet": "  ⇣ {bandwidthUpBits} ⇡ {bandwidthUpBits}",
+    "format-disconnected": "Offline",
+    "tooltip-format": "{ifname} · {ipaddr}",
+    "interval": 3
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " mute",
+    "format-icons": [" ", " "],
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "clock": {
+    "format": "{:%a, %d %b %Y %T}  ",
+    "interval": 1,
+    "tooltip-format": "Click to copy",
+    "on-click": "~/.local/bin/copy-datetime.sh left",
+    "on-click-right": "~/.local/bin/copy-datetime.sh right"
+  },
+  "custom/bell": {
+    "format": "🔔",
+    "on-click": "swaync-client -t -sw"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "custom/headset": {
+    "exec": "~/.local/bin/headset-battery",
+    "interval": 60,
+    "return-type": "json",
+    "tooltip": true
+  },
+  "custom/disks": {
+    "exec": "~/.local/bin/disks",
+    "interval": 60,
+    "return-type": "json",
+    "tooltip": true
+  },
+  "custom/music": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "waybar-module-music --marquee --title-width 15 --effect-speed 150",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/updates": {
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "󱍷",
+      "updated": ""
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --no-zero-output"
+  }
+}
